@@ -8,11 +8,10 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 ConfigureServices(builder.Services);
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-
 await builder.Build().RunAsync();
 
 void ConfigureServices(IServiceCollection services)
 {
 	services.AddIgniteUIBlazor();
+	services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 }
